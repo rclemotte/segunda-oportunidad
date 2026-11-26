@@ -48,6 +48,14 @@ export async function decidirVendedor(vendedorId: string, aprobado: boolean, mot
   return { error: error?.message };
 }
 
+export async function aprobarVendedor(vendedorId: string) {
+  return decidirVendedor(vendedorId, true, '');
+}
+
+export async function rechazarVendedor(vendedorId: string, motivo: string) {
+  return decidirVendedor(vendedorId, false, motivo);
+}
+
 export async function verificarCuenta(vendedorId: string) {
   const supabase = crearClienteServidor();
   const { error } = await supabase.from('cuentas_cobro').update({ verificada: true }).eq('vendedor_id', vendedorId);
