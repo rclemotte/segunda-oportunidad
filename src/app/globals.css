@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-fondo text-carbon antialiased;
+  }
+}
+
+@layer components {
+  .tarjeta {
+    @apply rounded-tarjeta bg-white shadow-tarjeta;
+  }
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-5 text-[15px] font-bold transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primario {
+    @apply btn bg-violeta text-white hover:bg-violeta-600;
+  }
+  .btn-lima {
+    @apply btn bg-lima text-violeta hover:bg-lima-600;
+  }
+  .btn-secundario {
+    @apply btn border border-violeta/15 bg-white text-violeta hover:bg-lavanda;
+  }
+  .btn-peligro {
+    @apply btn bg-error-bg text-error hover:bg-error/10;
+  }
+  .campo {
+    @apply h-12 w-full rounded-2xl border border-carbon/10 bg-white px-4 text-[15px] outline-none transition placeholder:text-carbon-300 focus:border-violeta focus:ring-2 focus:ring-violeta/15;
+  }
+  .etiqueta-campo {
+    @apply mb-1.5 block text-[13px] font-semibold text-carbon-500;
+  }
+  .chip {
+    @apply inline-flex h-9 items-center rounded-full border border-carbon/10 bg-white px-4 text-sm font-semibold text-carbon transition;
+  }
+  .chip-activo {
+    @apply border-violeta bg-violeta text-white;
+  }
+  .contenedor {
+    @apply mx-auto w-full max-w-6xl px-4 md:px-6;
+  }
+}
+
+.sin-scroll::-webkit-scrollbar {
+  display: none;
+}
+.sin-scroll {
+  scrollbar-width: none;
+}
