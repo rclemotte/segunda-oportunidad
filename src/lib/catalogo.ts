@@ -29,7 +29,8 @@ export function nombreEstadoPrenda(valor: string) {
 }
 
 export const TALLES_ROPA = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'Único'];
-export const TALLES_CALZADO = ['34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45'];
+// Calzados: numeración US (championes), del 4 al 14 con medios números. Se guarda como "US 8.5".
+export const TALLES_CALZADO = Array.from({ length: 21 }, (_, i) => `US ${4 + i / 2}`);
 export const TALLES_NINOS = ['2', '4', '6', '8', '10', '12', '14', '16'];
 
 export function tallesPara(categoria: string) {
