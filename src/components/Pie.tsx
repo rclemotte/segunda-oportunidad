@@ -30,7 +30,13 @@ export function Pie() {
           </ul>
         </div>
       </div>
-      <p className="contenedor pb-6 text-xs text-white/50">© {new Date().getFullYear()} Segunda Oportunidad · Paraguay</p>
+      <div className="contenedor flex flex-col gap-1 border-t border-white/10 py-5 text-xs text-white/50 sm:flex-row sm:justify-between">
+        <p>© {new Date().getFullYear()} Segunda Oportunidad · Paraguay</p>
+        <p>
+          Powered by <span className="font-semibold text-white/80">Riccardo Clemotte</span> &amp;{' '}
+          <span className="font-semibold text-white/80">Angel Cabrera</span>
+        </p>
+      </div>
     </footer>
   );
 }
