@@ -15,7 +15,8 @@ export async function obtenerSesion() {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return { supabase, user: null, perfil: null as Perfil | null };
-  const { data: perfil } = await supabase.from('perfiles').select('*').eq('id', user.id).maybeSingle();
+  const { data: perfil, error } = await supabase.from('perfiles').select('*').eq('id', user.id).maybeSingle();
+  if (error) console.error('perfil', error.message);
   return { supabase, user, perfil: perfil as Perfil | null };
 }
 

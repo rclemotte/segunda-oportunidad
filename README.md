@@ -22,6 +22,7 @@ Necesitás: una cuenta de GitHub (ya está), una de **Supabase** y una de **Verc
    1. `supabase/migrations/0001_esquema.sql`
    2. `supabase/migrations/0002_seguridad_y_funciones.sql`
    3. `supabase/migrations/0003_storage.sql`
+   4. `supabase/migrations/0004_permisos.sql` (da acceso a la app a las tablas; sin esto nada carga)
 
    Cada uno tiene que terminar con *Success. No rows returned*.
 4. **Authentication → Sign In / Providers → Email**: dejá activado *Email*. Para las primeras pruebas podés desactivar **Confirm email** (así no hace falta confirmar por correo); activalo antes de abrir al público.
