@@ -5,7 +5,7 @@ import { linkWhatsapp } from '@/lib/whatsapp';
 import { Etiqueta } from '@/components/ui/Etiqueta';
 import { Vacio } from '@/components/ui/Vacio';
 import { BotonAccion } from '../Boton';
-import { decidirVendedor, verificarCuenta } from '../actions';
+import { aprobarVendedor, rechazarVendedor, verificarCuenta } from '../actions';
 
 type V = {
   perfil_id: string;
@@ -19,9 +19,6 @@ type V = {
 };
 
 const TONO = { pendiente: 'alerta', aprobado: 'ok', rechazado: 'error' } as const;
-
-const aprobar = (id: string) => decidirVendedor(id, true, '');
-const rechazar = (id: string, motivo: string) => decidirVendedor(id, false, motivo);
 
 export default async function VendedoresAdmin({ searchParams }: { searchParams: { ver?: string } }) {
   const { supabase } = await requerirAdmin();
@@ -78,8 +75,8 @@ export default async function VendedoresAdmin({ searchParams }: { searchParams: 
               {c && !nombreCoincide && <p className="mt-2 text-[12px] font-bold text-alerta">Ojo: el titular de la cuenta no coincide con el nombre de la cédula.</p>}
               {v.motivo_rechazo && <p className="mt-2 text-error">Motivo del rechazo: {v.motivo_rechazo}</p>}
               <div className="mt-4 flex flex-wrap gap-2">
-                {v.estado_kyc !== 'aprobado' && <BotonAccion accion={aprobar} args={[v.perfil_id]} texto="Aprobar vendedor" confirmar="¿Cédula legible y titular coincide?" />}
-                {v.estado_kyc !== 'rechazado' && <BotonAccion accion={rechazar} args={[v.perfil_id]} texto="Rechazar" clase="btn-peligro h-10 px-4 text-sm" pedirTexto="Motivo (lo ve el vendedor):" />}
+                {v.estado_kyc !== 'aprobado' && <BotonAccion accion={aprobarVendedor} args={[v.perfil_id]} texto="Aprobar vendedor" confirmar="¿Cédula legible y titular coincide?" />}
+                {v.estado_kyc !== 'rechazado' && <BotonAccion accion={rechazarVendedor} args={[v.perfil_id]} texto="Rechazar" clase="btn-peligro h-10 px-4 text-sm" pedirTexto="Motivo (lo ve el vendedor):" />}
                 {v.estado_kyc === 'aprobado' && c && !c.verificada && <BotonAccion accion={verificarCuenta} args={[v.perfil_id]} texto="Verificar nueva cuenta" />}
               </div>
             </div>
